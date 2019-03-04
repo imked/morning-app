@@ -3,15 +3,22 @@ import styled from 'styled-components'
 
 const StyledCard = styled.section`
   width: 286px;
-  background: '#FFFFFF';
-  box-shadow: 0 2px 4px 0;
-  border-radius: 6px;
-  font-family: 'Open Sans', sans-serif;
+  box-shadow: 10px 11px 16px 0px rgba(219, 219, 219, 1);
+  border-radius: 10px;
+  color: #333;
+  background-color: #ffffff;
 
-  > h3,
-  p {
+  > h3 {
+    margin: 0;
+    padding: 10px 20px 20px;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  > p  {
+    overflow-y: scroll;
     margin: 0;
     padding: 0 20px 20px;
+    font-family: 'Roboto', sans-serif;
   }
 `
 

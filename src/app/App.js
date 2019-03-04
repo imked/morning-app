@@ -9,7 +9,7 @@ export default class App extends Component {
         <Helmet>
           <title>Morning App</title>
           <link
-            href="https://fonts.googleapis.com/css?family=Open+Sans"
+            href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto"
             rel="stylesheet"
           />
         </Helmet>
