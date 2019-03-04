@@ -1,17 +1,29 @@
 import React from 'react'
+import styled from 'styled-components'
+
+const StyledCard = styled.section`
+  width: 286px;
+  background: '#FFFFFF';
+  box-shadow: 0 2px 4px 0;
+  border-radius: 6px;
+
+  > h3,
+  p {
+    margin: 0;
+    padding: 0 20px 20px;
+  }
+`
 
 export default function Card() {
   return (
-    <card>
-      <img src="https://via.placeholder.com/286x120.png" alt="glass of water" />
+    <StyledCard>
+      <img src="/pictures/glasofwater.png" alt="glass of water" />
       <h3>Drink Water</h3>
-      <plus>+</plus>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat,
-        deserunt tenetur. Pariatur quod neque cupiditate doloribus quibusdam
-        doloremque architecto atque error, ut dicta. Fuga, nobis doloribus sit
-        veniam quos nihil.
+        After waking up, drink a large glass of water with a pinch of salt
+        (provided in the evening) and lemon juice. Your body is dehydrated after
+        the night, water right after getting up can work wonders.
       </p>
-    </card>
+    </StyledCard>
   )
 }
