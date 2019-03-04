@@ -6,6 +6,7 @@ const StyledCard = styled.section`
   background: '#FFFFFF';
   box-shadow: 0 2px 4px 0;
   border-radius: 6px;
+  font-family: 'Open Sans', sans-serif;
 
   > h3,
   p {
