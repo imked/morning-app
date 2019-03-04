@@ -19,6 +19,7 @@ const StyledCard = styled.section`
     margin: 0;
     padding: 0 20px 20px;
     font-family: 'Roboto', sans-serif;
+    font-weight: 300;
   }
 `
 
