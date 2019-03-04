@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import waterPath from '../images/glasofwater.png'
 
 const StyledCard = styled.section`
   width: 286px;
@@ -26,7 +27,7 @@ const StyledCard = styled.section`
 export default function Card() {
   return (
     <StyledCard>
-      <img src="/pictures/glasofwater.png" alt="glass of water" />
+      <img src={waterPath} alt="glass of water" />
       <h3>Drink Water</h3>
       <p>
         After waking up, drink a large glass of water with a pinch of salt
