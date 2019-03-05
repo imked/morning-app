@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import waterPath from '../images/glasofwater.png'
 
@@ -49,12 +49,22 @@ const StyledButton = styled.button`
 `
 
 export default function Card() {
+  const [data, setData] = useState({ isTogglePlus: true })
+
+  function handleClick() {
+    setData(data => ({
+      isTogglePlus: !data.isTogglePlus,
+    }))
+  }
+
   return (
     <StyledCard>
       <img src={waterPath} alt="glass of water" />
       <h3>
         Drink Water
-        <StyledButton>+</StyledButton>
+        <StyledButton onClick={handleClick}>
+          {data.isTogglePlus ? '+' : '-'}
+        </StyledButton>
       </h3>
       <p>
         After waking up, drink a large glass of water with a pinch of salt
