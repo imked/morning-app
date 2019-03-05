@@ -8,6 +8,20 @@ const StyledCard = styled.section`
   border-radius: 10px;
   color: #333;
   background-color: #ffffff;
+  position: relative;
+
+  & :after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background-image: linear-gradient(
+      rgba(255, 255, 255, 0) 30%,
+      rgba(255, 255, 255, 1) 90%
+    );
+  }
 
   > h3 {
     margin: 0;
@@ -16,11 +30,11 @@ const StyledCard = styled.section`
   }
 
   > p  {
-    overflow-y: scroll;
-    margin: 0;
+    height: 150px;
     padding: 0 20px 20px;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
+    overflow-y: scroll;
   }
 `
 
@@ -32,7 +46,10 @@ export default function Card() {
       <p>
         After waking up, drink a large glass of water with a pinch of salt
         (provided in the evening) and lemon juice. Your body is dehydrated after
-        the night, water right after getting up can work wonders.
+        the night, water right after getting up can work wonders. After waking
+        up, drink a large glass of water with a pinch of salt (provided in the
+        evening) and lemon juice. Your body is dehydrated after the night, water
+        right after getting up can work wonders.
       </p>
     </StyledCard>
   )
