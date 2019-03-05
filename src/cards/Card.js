@@ -49,12 +49,10 @@ const StyledButton = styled.button`
 `
 
 export default function Card() {
-  const [data, setData] = useState({ isTogglePlus: true })
+  const [data, setData] = useState({ selected: false })
 
   function handleClick() {
-    setData(data => ({
-      isTogglePlus: !data.isTogglePlus,
-    }))
+    setData({ selected: !data.selected })
   }
 
   return (
@@ -63,7 +61,7 @@ export default function Card() {
       <h3>
         Drink Water
         <StyledButton onClick={handleClick}>
-          {data.isTogglePlus ? '+' : '-'}
+          {data.selected ? '-' : '+'}
         </StyledButton>
       </h3>
       <p>
