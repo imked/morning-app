@@ -27,6 +27,7 @@ const StyledCard = styled.section`
     margin: 0;
     padding: 10px 20px 20px;
     font-family: 'Open Sans', sans-serif;
+    position: relative;
   }
 
   > p  {
@@ -37,12 +38,24 @@ const StyledCard = styled.section`
     overflow-y: scroll;
   }
 `
+const StyledButton = styled.button`
+  position: absolute;
+  right: 20px;
+  top: 6px;
+  width: 20px;
+  height: 6px;
+  color: #333;
+  font-size: 24px;
+`
 
 export default function Card() {
   return (
     <StyledCard>
       <img src={waterPath} alt="glass of water" />
-      <h3>Drink Water</h3>
+      <h3>
+        Drink Water
+        <StyledButton>+</StyledButton>
+      </h3>
       <p>
         After waking up, drink a large glass of water with a pinch of salt
         (provided in the evening) and lemon juice. Your body is dehydrated after
