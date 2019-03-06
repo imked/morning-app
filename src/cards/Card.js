@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import waterPath from '../images/glasofwater.png'
 
 const StyledCard = styled.section`
   width: 286px;
@@ -38,6 +37,7 @@ const StyledCard = styled.section`
     overflow-y: scroll;
   }
 `
+
 const StyledButton = styled.button`
   position: absolute;
   right: 20px;
@@ -47,8 +47,15 @@ const StyledButton = styled.button`
   color: #333;
   font-size: 24px;
 `
+Card.defaultProps = {
+  title: 'No title defined',
+  content: 'No content',
+  selected: false,
+  img: 'No image',
+  alt: 'No image',
+}
 
-export default function Card() {
+export default function Card({ title, content, img, alt }) {
   const [data, setData] = useState({ selected: false })
 
   function handleClick() {
@@ -57,21 +64,14 @@ export default function Card() {
 
   return (
     <StyledCard>
-      <img src={waterPath} alt="glass of water" />
+      <img src={img} alt={alt} />
       <h3>
-        Drink Water
+        {title}
         <StyledButton onClick={handleClick}>
           {data.selected ? '-' : '+'}
         </StyledButton>
       </h3>
-      <p>
-        After waking up, drink a large glass of water with a pinch of salt
-        (provided in the evening) and lemon juice. Your body is dehydrated after
-        the night, water right after getting up can work wonders. After waking
-        up, drink a large glass of water with a pinch of salt (provided in the
-        evening) and lemon juice. Your body is dehydrated after the night, water
-        right after getting up can work wonders.
-      </p>
+      <p>{content}</p>
     </StyledCard>
   )
 }

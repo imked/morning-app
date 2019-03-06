@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Card from '../cards/Card'
+import Cards from '../cards/Cards'
 import Helmet from 'react-helmet'
 
 export default class App extends Component {
@@ -13,7 +13,7 @@ export default class App extends Component {
             rel="stylesheet"
           />
         </Helmet>
-        <Card />
+        <Cards />
       </div>
     )
   }
