@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components'
 import Card from './Card'
 import wakeUpPath from '../images/wakingup.png'
 import waterPath from '../images/glasofwater.png'
@@ -33,16 +34,16 @@ const cards = [
   {
     img: meditatePath,
     alt: 'meditation',
-    title: 'Visualize goals',
+    title: 'Meditate',
     content:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, debitis? Molestias harum dolore animi deleniti quod ut, porro nisi ducimus deserunt voluptate commodi omnis ullam reiciendis, eius soluta amet? Ipsum.',
+      'You don`t have to do yoga exercises, but simply breathe in and out deeply in a relaxed position and try not to think of anything. This method also helps to clear your mind and to start working more easily and creatively.',
   },
   {
     img: visualizePath,
     alt: 'visualization',
-    title: 'Meditate',
+    title: 'Visualize your goals',
     content:
-      'You don`t have to do yoga exercises, but simply breathe in and out deeply in a relaxed position and try not to think of anything. This method also helps to clear your mind and to start working more easily and creatively.',
+      'Visualization means to imagine something pictorial. Now it`s about your goals in life. In the near or distant future, that is up to you. Imagine for a few minutes the life you wish for: a wonderful family, a loving spouse, a beautiful house, a great job.If you are absolutely satisfied with your current life, imagine the most beautiful things you already have. About 5 minutes long. The background of the visualization are your mirror neurons. This is a special kind of nerve cells that have to do with visualization and social interactions. The clou: They don`t distinguish between fiction and reality if you repeat a visualization over and over again. Mirror neurons need to be trained for a few days, but the effect is similar to the affirmations that your subconscious is reversed so that it thinks you have already achieved these goals. And so your whole inner attitude will change: it will be adjusted directly to success.',
   },
   {
     img: exercisePath,
@@ -60,12 +61,18 @@ const cards = [
   },
 ]
 
+const CardContainer = styled.section`
+  display: grid;
+  grid-gap: 40px;
+  padding: 38px;
+`
+
 export default function Cards() {
   return (
-    <card>
-      {cards.map(card => (
-        <Card {...card} />
-      ))}
-    </card>
+    <CardContainer>
+      {cards.map(function(card, index) {
+        return <Card key={index} {...card} />
+      })}
+    </CardContainer>
   )
 }
