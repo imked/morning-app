@@ -8,7 +8,7 @@ export default class App extends Component {
     return (
       <Router>
         <Helmet>
-          <title>Morning App</title>
+          <title>My Miracle Morning</title>
           <link
             href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600|Roboto:300,400"
             rel="stylesheet"
