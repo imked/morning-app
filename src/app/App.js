@@ -18,7 +18,12 @@ export default class App extends Component {
           <Route exact path="/" />
           <Route path="/routines" component={Cards} />
         </div>
-        <Cards />
+        <nav>
+          <link exact to="/">
+            Daily Tasks
+          </link>
+          <link to="/routines">Morning Routine</link>
+        </nav>
       </Router>
     )
   }
