@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import Cards from '../cards/Cards'
 import Helmet from 'react-helmet'
+import { BrowserRouter as Router, NavLink, Route } from 'react-router-dom'
 
 export default class App extends Component {
   render() {
     return (
-      <div>
+      <Router>
         <Helmet>
           <title>Morning App</title>
           <link
@@ -13,8 +14,12 @@ export default class App extends Component {
             rel="stylesheet"
           />
         </Helmet>
+        <div>
+          <Route exact path="/" />
+          <Route path="/routines" component={Cards} />
+        </div>
         <Cards />
-      </div>
+      </Router>
     )
   }
 }
