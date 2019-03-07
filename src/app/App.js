@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Cards from '../cards/Cards'
+import Form from '../form/Form'
 import Helmet from 'react-helmet'
 import { BrowserRouter as Router, NavLink, Route } from 'react-router-dom'
 import styled from 'styled-components'
@@ -41,7 +42,7 @@ export default class App extends Component {
               rel="stylesheet"
             />
           </Helmet>
-          <Route exact path="/" />
+          <Route exact path="/" component={Form} />
           <Route path="/routines" component={Cards} />
           <Nav>
             <StyledLink exact to="/">
