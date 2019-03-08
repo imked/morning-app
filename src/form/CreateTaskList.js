@@ -5,7 +5,9 @@ import TaskList from './TaskList'
 
 const Grid = styled.section`
   display: grid;
-  align-content: flex-end;
+  grid-template-rows: 1fr 100px;
+  align-content: top;
+  justify-content: center;
 `
 
 export default function CreateTaskList() {
