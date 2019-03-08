@@ -1,11 +1,11 @@
 describe('React App', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000')
+    cy.visit('http://localhost:3000/routines')
   })
 
   describe('/', () => {
     it('has the correct title', () => {
-      cy.title().should('include', 'Morning App')
+      cy.title().should('include', 'My Miracle Morning')
     })
   })
 
