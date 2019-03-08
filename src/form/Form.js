@@ -6,20 +6,18 @@ const StyledForm = styled.form`
   grid-template-columns: 20px, 20px;
   margin: 30px;
   grid-gap: 10px;
-
-  > button {
-    margin: 0 80px;
-    border-radius: 10px;
-    background: #f4b16b;
-    border: #f4b16b;
-    color: #fff;
-  }
-
-  > input {
-    border-radius: 10px;
-    border: 1px solid #f4b16b;
-    padding: 5px 10px;
-  }
+`
+const StyledInput = styled.input`
+  border-radius: 10px;
+  border: 1px solid #f4b16b;
+  padding: 5px 10px;
+`
+const StyledButton = styled.button`
+  margin: 0 80px;
+  border-radius: 10px;
+  background: #f4b16b;
+  border: #f4b16b;
+  color: #fff;
 `
 
 export default function Form({ saveTask }) {
@@ -36,14 +34,14 @@ export default function Form({ saveTask }) {
 
   return (
     <StyledForm onSubmit={onSubmit}>
-      <input
+      <StyledInput
         value={value}
         onChange={onChange}
         name="task"
         type="text"
         placeholder="Insert tasks here"
       />
-      <button>Add task!</button>
+      <StyledButton>Add task!</StyledButton>
     </StyledForm>
   )
 }
