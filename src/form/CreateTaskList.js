@@ -5,6 +5,7 @@ import TaskList from './TaskList'
 
 const Grid = styled.section`
   display: grid;
+  grid-gap: 10px;
   grid-template-rows: 1fr 100px;
   align-content: top;
   justify-content: center;

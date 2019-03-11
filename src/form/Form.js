@@ -3,20 +3,16 @@ import styled from 'styled-components'
 
 const StyledForm = styled.form`
   display: grid;
-  grid-template-columns: 20px, 20px;
-  margin: 30px;
   grid-gap: 10px;
 `
 const StyledInput = styled.input`
-  border-radius: 10px;
-  border: 1px solid #f4b16b;
-  padding: 5px 10px;
+  margin: 10px 15px 0;
 `
 const StyledButton = styled.button`
-  margin: 0 80px;
-  border-radius: 10px;
+  margin: 0 40px 20px;
   background: #f4b16b;
   border: #f4b16b;
+  border-radius: 4px;
   color: #fff;
 `
 

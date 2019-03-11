@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import GlobalStyle from './GlobalStyle'
 import Cards from '../cards/Cards'
 import CreateTaskList from '../form/CreateTaskList'
 import Helmet from 'react-helmet'
@@ -50,6 +51,7 @@ export default class App extends Component {
             </StyledLink>
             <StyledLink to="/routines">Routines</StyledLink>
           </Nav>
+          <GlobalStyle />
         </Grid>
       </Router>
     )
