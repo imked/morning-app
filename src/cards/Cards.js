@@ -65,6 +65,7 @@ const CardContainer = styled.section`
   display: grid;
   grid-gap: 40px;
   padding: 38px;
+  overflow-y: scroll;
 `
 
 export default function Cards() {
