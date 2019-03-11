@@ -46,6 +46,9 @@ const StyledButton = styled.button`
   height: 6px;
   color: #333;
   font-size: 24px;
+  & :focus {
+    outline: 0;
+  }
 `
 Card.defaultProps = {
   title: 'No title defined',
