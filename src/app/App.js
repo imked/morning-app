@@ -5,17 +5,19 @@ import CreateTaskList from '../form/CreateTaskList'
 import Helmet from 'react-helmet'
 import { BrowserRouter as Router, NavLink, Route } from 'react-router-dom'
 import styled from 'styled-components'
+import Header from '../common/Header'
 
 const Grid = styled.div`
   display: grid;
   height: 100vh;
-  grid-template-rows: auto 48px;
+  grid-template-rows: 48px auto 48px;
 `
 
 const Nav = styled.nav`
   display: grid;
   grid-auto-flow: column;
   grid-gap: 2px;
+  overflow: hidden;
 `
 
 const StyledLink = styled(NavLink)`
@@ -39,10 +41,11 @@ export default class App extends Component {
           <Helmet>
             <title>My Miracle Morning</title>
             <link
-              href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600|Roboto:300,400"
+              href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab"
               rel="stylesheet"
             />
           </Helmet>
+          <Header />
           <Route exact path="/" render={() => <CreateTaskList />} />
           <Route path="/routines" component={Cards} />
           <Nav>

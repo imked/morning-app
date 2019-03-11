@@ -9,6 +9,7 @@ const Grid = styled.section`
   grid-template-rows: 1fr 100px;
   align-content: top;
   justify-content: center;
+  overflow-y: scroll;
 `
 
 export default function CreateTaskList() {
