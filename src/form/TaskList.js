@@ -18,14 +18,18 @@ const StyledItem = styled.li`
   width: 260px;
 `
 
-export default function TaskList({ tasks, title }) {
+export default function TaskList({ tasks, cards }) {
   return (
     <div>
-      {console.log(title)}
       <StyledList>
         {tasks.map((task, index) => (
           <StyledItem key={index.toString()}>{task}</StyledItem>
         ))}
+        {cards
+          .filter(card => card.isSelected)
+          .map((card, index) => (
+            <StyledItem key={index.toString()}>{card.title}</StyledItem>
+          ))}
       </StyledList>
     </div>
   )

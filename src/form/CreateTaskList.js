@@ -12,7 +12,7 @@ const Grid = styled.section`
   overflow-y: scroll;
 `
 
-export default function CreateTaskList() {
+export default function CreateTaskList({ cards, onSelect }) {
   const [tasks, setTasks] = useState([])
 
   function saveTask(taskText) {
@@ -24,7 +24,7 @@ export default function CreateTaskList() {
 
   return (
     <Grid>
-      <TaskList tasks={tasks} />
+      <TaskList tasks={tasks} cards={cards} onSelect={onSelect} />
       <Form saveTask={saveTask} />
     </Grid>
   )

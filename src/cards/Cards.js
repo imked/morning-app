@@ -9,11 +9,18 @@ const CardContainer = styled.section`
   overflow-y: scroll;
 `
 
-export default function Cards({ cards }) {
+export default function Cards({ cards, onSelect }) {
   return (
     <CardContainer>
       {cards.map(function(card, index) {
-        return <Card key={index} {...card} />
+        return (
+          <Card
+            key={index}
+            {...card}
+            isSelected={card.isSelected}
+            onSelect={() => onSelect(card)}
+          />
+        )
       })}
     </CardContainer>
   )
