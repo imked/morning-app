@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 const StyledCard = styled.section`
@@ -58,21 +58,20 @@ Card.defaultProps = {
   alt: 'No image',
 }
 
-export default function Card({ title, content, img, alt }) {
-  const [data, setData] = useState({ selected: false })
-
-  function handleClick() {
-    setData({ selected: !data.selected })
-  }
-
+export default function Card({
+  title,
+  content,
+  img,
+  alt,
+  onSelect,
+  isSelected,
+}) {
   return (
     <StyledCard>
       <img src={img} alt={alt} />
       <h3>
         {title}
-        <StyledButton onClick={handleClick}>
-          {data.selected ? '-' : '+'}
-        </StyledButton>
+        <StyledButton onClick={onSelect}>{isSelected ? '-' : '+'}</StyledButton>
       </h3>
       <p>{content}</p>
     </StyledCard>
