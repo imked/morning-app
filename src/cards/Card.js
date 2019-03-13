@@ -22,13 +22,6 @@ const StyledCard = styled.section`
     );
   }
 
-  > h3 {
-    margin: 0;
-    padding: 10px 20px 20px;
-    font-family: 'Open Sans', sans-serif;
-    position: relative;
-  }
-
   > p  {
     height: 150px;
     padding: 0 20px 20px;
@@ -37,17 +30,19 @@ const StyledCard = styled.section`
     overflow-y: scroll;
   }
 `
-
-const StyledButton = styled.button`
-  position: absolute;
-  right: 20px;
-  top: 6px;
-  width: 20px;
-  height: 6px;
-  color: #333;
-  font-size: 24px;
-  & :focus {
-    outline: 0;
+const StyledTitle = styled.div`
+  margin: 0;
+  padding: 0 20px;
+  font-family: 'Open Sans', sans-serif;
+  display: flex;
+  justify-content: space-between;
+  > button {
+    color: #333;
+    font-size: 24px;
+    border: none;
+    & :focus {
+      outline: none;
+    }
   }
 `
 Card.defaultProps = {
@@ -69,10 +64,10 @@ export default function Card({
   return (
     <StyledCard>
       <img src={img} alt={alt} />
-      <h3>
-        {title}
-        <StyledButton onClick={onSelect}>{isSelected ? '-' : '+'}</StyledButton>
-      </h3>
+      <StyledTitle>
+        <h3>{title}</h3>
+        <button onClick={onSelect}>{isSelected ? '-' : '+'}</button>
+      </StyledTitle>
       <p>{content}</p>
     </StyledCard>
   )
