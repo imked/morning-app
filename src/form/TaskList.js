@@ -1,8 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
-import IconButton from '@material-ui/core/IconButton'
 import DeleteIcon from '@material-ui/icons/Delete'
-import { Checkbox } from '@material-ui/core'
 
 const StyledList = styled.ul`
   list-style-type: none;
@@ -10,15 +8,32 @@ const StyledList = styled.ul`
   padding-inline-start: 0;
 `
 const StyledItem = styled.li`
-  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 25px 1fr 25px;
+  border-radius: 4px;
   border: 1px solid #f4b16b;
   padding: 5px 10px;
   margin: 0 15px;
   width: 250px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  margin: 5px;
+
   width: 260px;
+  > p {
+    margin: 0 2px;
+    padding: 5px 0 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  > input {
+    margin: 5px 5px 0;
+  }
+`
+
+const StyledButton = styled.button`
+  background-color: white;
+  border-color: white;
+  padding: 0;
 `
 
 export default function TaskList({ tasks, cards, deleteTask }) {
@@ -27,28 +42,21 @@ export default function TaskList({ tasks, cards, deleteTask }) {
       <StyledList>
         {tasks.map((task, index) => (
           <StyledItem key={index.toString()}>
-            <Checkbox />
-            <div>{task}</div>
-            <IconButton aria-label="Delete" onClick={() => deleteTask(index)}>
+            <input type="checkbox" />
+            <p>{task}</p>
+            <StyledButton
+              onClick={() => {
+                deleteTask(index)
+              }}
+            >
               <DeleteIcon />
-            </IconButton>
+            </StyledButton>
           </StyledItem>
         ))}
         {cards
           .filter(card => card.isSelected)
           .map((card, index) => (
-            <StyledItem key={index.toString()}>
-              <Checkbox />
-              <div>{card.title}</div>
-              <IconButton
-                aria-label="Delete"
-                onClick={() => {
-                  deleteTask(index)
-                }}
-              >
-                <DeleteIcon />
-              </IconButton>
-            </StyledItem>
+            <StyledItem key={index.toString()}>{card.title}</StyledItem>
           ))}
       </StyledList>
     </div>

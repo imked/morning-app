@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Form from './Form'
 import styled from 'styled-components'
 import TaskList from './TaskList'
+import useTaskState from './useTaskState'
 
 const Grid = styled.section`
   display: grid;
@@ -13,17 +14,13 @@ const Grid = styled.section`
 `
 
 export default function CreateTaskList({ cards, onSelect }) {
-  const [tasks, setTasks] = useState([])
+  const { tasks, addTask, deleteTask } = useTaskState([])
 
-  function saveTask(taskText) {
-    const trimmedText = taskText.trim()
+  function saveTask(text) {
+    const trimmedText = text.trim()
     if (trimmedText.length > 0) {
-      setTasks([...tasks, trimmedText])
+      addTask(trimmedText)
     }
-  }
-
-  function deleteTask(index) {
-    setTasks([...tasks.slice(0, index), ...tasks.slice(index + 1)])
   }
 
   return (
