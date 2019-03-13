@@ -117,7 +117,7 @@ export default function App() {
         <Helmet>
           <title>My Miracle Morning</title>
           <link
-            href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab"
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500|Roboto+Slab"
             rel="stylesheet"
           />
         </Helmet>
