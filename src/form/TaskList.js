@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import IconButton from '@material-ui/core/IconButton'
+import DeleteIcon from '@material-ui/icons/Delete'
 
 const StyledList = styled.ul`
   list-style-type: none;
@@ -18,12 +20,22 @@ const StyledItem = styled.li`
   width: 260px;
 `
 
-export default function TaskList({ tasks, cards }) {
+export default function TaskList({ tasks, cards, deleteTask }) {
   return (
     <div>
       <StyledList>
         {tasks.map((task, index) => (
-          <StyledItem key={index.toString()}>{task}</StyledItem>
+          <StyledItem key={index.toString()}>
+            {task}
+            <IconButton
+              aria-label="Delete"
+              onClick={() => {
+                deleteTask(index)
+              }}
+            >
+              <DeleteIcon />
+            </IconButton>
+          </StyledItem>
         ))}
         {cards
           .filter(card => card.isSelected)
