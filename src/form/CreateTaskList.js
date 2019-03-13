@@ -22,9 +22,18 @@ export default function CreateTaskList({ cards, onSelect }) {
     }
   }
 
+  function deleteTask(index) {
+    setTasks([...tasks.slice(0, index), ...tasks.slice(index + 1)])
+  }
+
   return (
     <Grid>
-      <TaskList tasks={tasks} cards={cards} onSelect={onSelect} />
+      <TaskList
+        tasks={tasks}
+        cards={cards}
+        onSelect={onSelect}
+        deleteTask={deleteTask}
+      />
       <Form saveTask={saveTask} />
     </Grid>
   )

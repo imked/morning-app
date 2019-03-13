@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import IconButton from '@material-ui/core/IconButton'
 import DeleteIcon from '@material-ui/icons/Delete'
+import { Checkbox } from '@material-ui/core'
 
 const StyledList = styled.ul`
   list-style-type: none;
@@ -26,13 +27,9 @@ export default function TaskList({ tasks, cards, deleteTask }) {
       <StyledList>
         {tasks.map((task, index) => (
           <StyledItem key={index.toString()}>
-            {task}
-            <IconButton
-              aria-label="Delete"
-              onClick={() => {
-                deleteTask(index)
-              }}
-            >
+            <Checkbox />
+            <div>{task}</div>
+            <IconButton aria-label="Delete" onClick={() => deleteTask(index)}>
               <DeleteIcon />
             </IconButton>
           </StyledItem>
@@ -40,7 +37,18 @@ export default function TaskList({ tasks, cards, deleteTask }) {
         {cards
           .filter(card => card.isSelected)
           .map((card, index) => (
-            <StyledItem key={index.toString()}>{card.title}</StyledItem>
+            <StyledItem key={index.toString()}>
+              <Checkbox />
+              <div>{card.title}</div>
+              <IconButton
+                aria-label="Delete"
+                onClick={() => {
+                  deleteTask(index)
+                }}
+              >
+                <DeleteIcon />
+              </IconButton>
+            </StyledItem>
           ))}
       </StyledList>
     </div>
