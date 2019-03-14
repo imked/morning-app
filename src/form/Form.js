@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
+import useInputState from './useInputState'
 
 const StyledForm = styled.form`
   display: grid;
@@ -17,15 +18,12 @@ const StyledButton = styled.button`
 `
 
 export default function Form({ saveTask }) {
-  const [value, setValue] = useState('')
+  const { value, reset, onChange } = useInputState('')
 
   function onSubmit(event) {
     event.preventDefault()
     saveTask(value)
-  }
-
-  function onChange(event) {
-    setValue(event.target.value)
+    reset('')
   }
 
   return (

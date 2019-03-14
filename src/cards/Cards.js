@@ -7,6 +7,7 @@ const CardContainer = styled.section`
   grid-gap: 40px;
   padding: 38px;
   overflow-y: scroll;
+  justify-content: center;
 `
 
 export default function Cards({ cards, onSelect }) {

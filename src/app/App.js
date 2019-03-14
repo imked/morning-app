@@ -106,9 +106,10 @@ export default function App() {
     const index = cards.indexOf(card)
     setCards([
       ...cards.slice(0, index),
-      { ...card, isSelected: !cards.isSelected },
+      { ...card, isSelected: !card.isSelected },
       ...cards.slice(index + 1),
     ])
+    console.log(cards)
   }
 
   return (
@@ -117,8 +118,12 @@ export default function App() {
         <Helmet>
           <title>My Miracle Morning</title>
           <link
-            href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab"
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500|Roboto+Slab"
             rel="stylesheet"
+          />
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
           />
         </Helmet>
         <Header />
