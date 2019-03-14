@@ -29,6 +29,7 @@ export default function Form({ saveTask }) {
   return (
     <StyledForm onSubmit={onSubmit}>
       <StyledInput
+        value={value}
         onChange={onChange}
         name="task"
         type="text"

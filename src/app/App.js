@@ -106,9 +106,10 @@ export default function App() {
     const index = cards.indexOf(card)
     setCards([
       ...cards.slice(0, index),
-      { ...card, isSelected: !cards.isSelected },
+      { ...card, isSelected: !card.isSelected },
       ...cards.slice(index + 1),
     ])
+    console.log(cards)
   }
 
   return (
