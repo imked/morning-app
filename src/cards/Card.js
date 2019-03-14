@@ -37,6 +37,7 @@ const StyledTitle = styled.div`
   display: flex;
   justify-content: space-between;
   > button {
+    background: white;
     color: #333;
     font-size: 24px;
     border: none;
