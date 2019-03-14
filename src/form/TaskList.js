@@ -16,7 +16,6 @@ const StyledItem = styled.li`
   margin: 0 15px;
   width: 250px;
   margin: 5px;
-  text-decoration: ${p => (p.active ? 'line-through' : null)};
 
   width: 260px;
   > p {
@@ -37,20 +36,14 @@ const StyledButton = styled.button`
   padding: 0;
 `
 
-export default function TaskList({
-  tasks,
-  cards,
-  deleteTask,
-  onSelect,
-  onChangeCheck,
-}) {
+export default function TaskList({ tasks, cards, deleteTask, onSelect }) {
   return (
     <div>
       <StyledList>
         {tasks.map((task, index) => (
           <StyledItem key={index}>
-            <input onChange={onChangeCheck} type="checkbox" />
-            <p>{task.text}</p>
+            <input type="checkbox" />
+            <p>{task}</p>
             <StyledButton
               onClick={() => {
                 deleteTask(index)

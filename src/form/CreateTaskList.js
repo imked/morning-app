@@ -14,7 +14,7 @@ const Grid = styled.section`
 `
 
 export default function CreateTaskList({ cards, onSelect }) {
-  const { tasks, addTask, deleteTask, onChangeCheck } = useTaskState([])
+  const { tasks, addTask, deleteTask } = useTaskState([])
 
   function saveTask(text) {
     const trimmedText = text.trim()
@@ -30,7 +30,6 @@ export default function CreateTaskList({ cards, onSelect }) {
         cards={cards}
         onSelect={onSelect}
         deleteTask={deleteTask}
-        onChangeCheck={onChangeCheck}
       />
       <Form saveTask={saveTask} />
     </Grid>
