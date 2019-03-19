@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import DeleteIcon from '@material-ui/icons/Delete'
+import { uid } from 'react-uid'
 
 const StyledList = styled.ul`
   list-style-type: none;
@@ -41,7 +42,7 @@ export default function TaskList({ tasks, cards, deleteTask, onSelect }) {
     <div>
       <StyledList>
         {tasks.map((task, index) => (
-          <StyledItem key={index}>
+          <StyledItem key={uid(index)}>
             <input type="checkbox" />
             <p>{task}</p>
             <StyledButton
@@ -56,7 +57,7 @@ export default function TaskList({ tasks, cards, deleteTask, onSelect }) {
         {cards
           .filter(card => card.isSelected)
           .map((card, index) => (
-            <StyledItem key={index}>
+            <StyledItem key={uid(index)}>
               <input type="checkbox" />
               <p>{card.title}</p>
               <StyledButton onClick={() => onSelect(card)}>
