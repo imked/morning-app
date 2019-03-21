@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import DeleteIcon from '@material-ui/icons/Delete'
 import { uid } from 'react-uid'
+import DraggableList from './DraggableList'
 
 const StyledList = styled.ul`
   list-style-type: none;
@@ -52,7 +53,9 @@ export default function TaskList({ tasks, cards, deleteTask, onSelect }) {
             </StyledButton>
           </StyledItem>
         ))}
-        {cards
+      </StyledList>
+      <DraggableList
+        items={cards
           .filter(card => card.isSelected)
           .map((card, index) => (
             <StyledItem key={uid(index)}>
@@ -63,7 +66,7 @@ export default function TaskList({ tasks, cards, deleteTask, onSelect }) {
               </StyledButton>
             </StyledItem>
           ))}
-      </StyledList>
+      />
     </div>
   )
 }

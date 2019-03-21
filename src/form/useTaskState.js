@@ -6,7 +6,7 @@ export default initialValue => {
   return {
     tasks,
     addTask: taskText => {
-      setTasks([...tasks, taskText])
+      setTasks([...tasks, { title: taskText }])
     },
     deleteTask: taskIndex => {
       const newTasks = tasks.filter((_, index) => index !== taskIndex)
