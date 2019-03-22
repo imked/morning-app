@@ -5,7 +5,7 @@ import logo from '../images/logo_sunrise.png'
 const StyledHeader = styled.header`
   display: flex;
   background: #f4b16b;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 `
 const StyledImage = styled.img`
@@ -13,16 +13,16 @@ const StyledImage = styled.img`
 `
 const StyledTitle = styled.div`
   color: #fefefe;
-  padding: 0 30px;
+  padding: 0;
   font-family: 'Roboto slab', serif;
+  font-size: 24px;
 `
 
 export default function Header() {
   return (
     <StyledHeader>
-      <StyledTitle>Miracle</StyledTitle>
       <StyledImage data-cy="header-logo" src={logo} alt="sunrise" />
-      <StyledTitle>Morning</StyledTitle>
+      <StyledTitle>MIRACLE MORNING</StyledTitle>
     </StyledHeader>
   )
 }
