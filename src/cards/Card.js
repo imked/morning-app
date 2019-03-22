@@ -8,6 +8,7 @@ const StyledCard = styled.section`
   color: #333;
   background-color: #ffffff;
   position: relative;
+  margin: 0;
 
   & :after {
     content: '';
@@ -28,6 +29,7 @@ const StyledCard = styled.section`
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
     overflow-y: scroll;
+    margin: 0;
   }
 `
 const StyledTitle = styled.div`
@@ -36,6 +38,7 @@ const StyledTitle = styled.div`
   font-family: 'Open Sans', sans-serif;
   display: flex;
   justify-content: space-between;
+  text-transform: uppercase;
   > button {
     background: white;
     color: #333;

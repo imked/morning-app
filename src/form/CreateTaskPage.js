@@ -13,8 +13,6 @@ const Grid = styled.section`
 `
 
 export default function CreateTaskPage({ addTask, cards, onSelect }) {
-  // const { tasks, addTask, deleteTask } = useTaskState([])
-
   return (
     <Grid>
       <TaskList tasks={cards.title} cards={cards} onSelect={onSelect} />
