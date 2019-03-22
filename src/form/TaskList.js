@@ -33,7 +33,6 @@ const StyledItem = styled.li`
   }
 `
 const StyledButton = styled.button`
-  padding: -1px;
   height: 30px;
 `
 

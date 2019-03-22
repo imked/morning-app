@@ -17,7 +17,4 @@ export default createGlobalStyle`
     width: 286px;
     height: 38px;
   }
-
-
-
 `
