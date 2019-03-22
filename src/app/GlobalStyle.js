@@ -14,7 +14,6 @@ export default createGlobalStyle`
     padding-left: 4px;
     font-size: 16px;
     border-radius: 4px;
-    border: 2px solid #f4b16b;
     width: 286px;
     height: 38px;
   }

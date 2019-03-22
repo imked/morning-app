@@ -46,6 +46,10 @@ export default function App() {
       ...cards.slice(index + 1),
     ])
   }
+  function addTask(value) {
+    setCards([...cards, { title: value, isSelected: true }])
+    console.log(cards)
+  }
 
   return (
     <Router>
@@ -66,7 +70,13 @@ export default function App() {
         <Route
           exact
           path="/create"
-          render={() => <CreateTaskPage cards={cards} onSelect={onSelect} />}
+          render={() => (
+            <CreateTaskPage
+              cards={cards}
+              onSelect={onSelect}
+              addTask={addTask}
+            />
+          )}
         />
         <Route
           path="/routines"

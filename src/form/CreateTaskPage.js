@@ -2,7 +2,6 @@ import React from 'react'
 import Form from './Form'
 import styled from 'styled-components'
 import TaskList from './TaskList'
-import useTaskState from './useTaskState'
 
 const Grid = styled.section`
   display: grid;
@@ -13,17 +12,12 @@ const Grid = styled.section`
   overflow-y: scroll;
 `
 
-export default function CreateTaskPage({ cards, onSelect }) {
-  const { tasks, addTask, deleteTask } = useTaskState([])
+export default function CreateTaskPage({ addTask, cards, onSelect }) {
+  // const { tasks, addTask, deleteTask } = useTaskState([])
 
   return (
     <Grid>
-      <TaskList
-        tasks={tasks}
-        cards={cards}
-        onSelect={onSelect}
-        deleteTask={deleteTask}
-      />
+      <TaskList tasks={cards.title} cards={cards} onSelect={onSelect} />
       <Form addTask={addTask} />
     </Grid>
   )

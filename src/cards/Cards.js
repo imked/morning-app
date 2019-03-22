@@ -13,16 +13,18 @@ const CardContainer = styled.section`
 export default function Cards({ cards, onSelect }) {
   return (
     <CardContainer>
-      {cards.map(function(card, index) {
-        return (
-          <Card
-            key={index}
-            {...card}
-            isSelected={card.isSelected}
-            onSelect={() => onSelect(card)}
-          />
-        )
-      })}
+      {cards
+        .filter(card => Object.keys(card).length > 2)
+        .map(function(card, index) {
+          return (
+            <Card
+              key={index}
+              {...card}
+              isSelected={card.isSelected}
+              onSelect={() => onSelect(card)}
+            />
+          )
+        })}
     </CardContainer>
   )
 }
