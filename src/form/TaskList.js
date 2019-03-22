@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import DeleteIcon from '@material-ui/icons/Delete'
-import { uid } from 'react-uid'
 import DraggableList from './DraggableList'
 
 const StyledDiv = styled.div`
@@ -44,8 +43,8 @@ export default function TaskList({ cards, onSelect }) {
       <DraggableList
         items={cards
           .filter(card => card.isSelected)
-          .map((card, index) => (
-            <StyledItem key={uid(index)}>
+          .map(card => (
+            <StyledItem>
               <input type="checkbox" />
               <p>{card.title}</p>
               <StyledButton onClick={() => onSelect(card)}>
