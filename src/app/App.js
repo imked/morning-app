@@ -115,9 +115,6 @@ export default function App() {
         />
         <Route path="/timer" render={() => <Timer />} />
         <Nav>
-          <StyledLink exact to="/">
-            <img src={homeIcon} alt="home" />
-          </StyledLink>
           <StyledLink to="/routines">
             <img src={bookmarkIcon} alt="bookmark" />
           </StyledLink>
