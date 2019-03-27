@@ -16,7 +16,6 @@ import Header from '../common/Header'
 import routines from './routines'
 import bookmarkIcon from '../images/Bookmark.png'
 import checkedIcon from '../images/Checked.png'
-import homeIcon from '../images/Home.png'
 import clockIcon from '../images/Clock.png'
 
 const Grid = styled.div`

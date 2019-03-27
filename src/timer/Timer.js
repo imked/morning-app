@@ -10,6 +10,10 @@ const Container = styled('div')`
   flex-direction: column;
   justify-content: center;
   height: 100%;
+
+  > h2 {
+    color: #f4b16b;
+  }
 `
 
 const Options = styled('div')`
@@ -24,29 +28,23 @@ const Options = styled('div')`
 `
 
 const RoundButton = styled('button')`
+  background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+  color: #fefefe;
   align-items: center;
   border: none;
   border-radius: 75px;
-
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.6);
   cursor: pointer;
   display: inline-flex;
-  font-size: 40px;
-  font-weight: 700;
-  height: 100px;
+  font-size: 30px;
+  font-weight: 600;
+  height: 80px;
+  width: 80px;
   justify-content: center;
   margin: 10px;
   outline: none;
-  transition-property: background-color, box-shadow;
+  transition-property: background-color;
   transition-duration: 75ms;
   transition-timing-function: ease-out;
-  width: 100px;
-  :hover {
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
-  }
-  :active {
-    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-  }
 `
 
 const Timer = styled('div')`
@@ -54,6 +52,7 @@ const Timer = styled('div')`
   font-weight: 700;
   line-height: 40px;
   position: absolute;
+  color: #f4b16b;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%)
@@ -72,7 +71,7 @@ const MODE = {
 const initialState = {
   countDown: null,
   mode: MODE.INITIAL,
-  options: [60, 45, 30, 15, 5],
+  options: [60, 45, 30, 15, 10, 5],
 }
 
 const reducer = (state, { type, payload }) =>
@@ -121,6 +120,7 @@ export default function TaskTimer() {
 
   return (
     <Container>
+      <h2>Set your Timer!</h2>
       <Options visible={mode === MODE.INITIAL}>
         {options.map(option => (
           <RoundButton

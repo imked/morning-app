@@ -3,8 +3,8 @@ import styled from 'styled-components'
 
 const StyledCard = styled.section`
   width: 286px;
-  box-shadow: 10px 11px 16px 0px rgba(219, 219, 219, 1);
   border-radius: 10px;
+  box-shadow: 10px 11px 16px 10px rgba(219, 219, 219, 1);
   color: #333;
   background-color: #ffffff;
   position: relative;
@@ -31,6 +31,10 @@ const StyledCard = styled.section`
     overflow-y: scroll;
     margin: 0;
   }
+
+  > * {
+    border-radius: 10px;
+  }
 `
 const StyledTitle = styled.div`
   margin: 0;
@@ -39,6 +43,7 @@ const StyledTitle = styled.div`
   display: flex;
   justify-content: space-between;
   text-transform: uppercase;
+  color: #f4b16b;
   > button {
     background: white;
     color: #333;
@@ -49,6 +54,21 @@ const StyledTitle = styled.div`
     }
   }
 `
+
+const StyledImage = styled.div`
+  position: relative;
+  & :after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    opacity: 0.5;
+  }
+`
+
 Card.defaultProps = {
   title: 'No title defined',
   content: 'No content',
@@ -67,7 +87,9 @@ export default function Card({
 }) {
   return (
     <StyledCard>
-      <img src={img} alt={alt} />
+      <StyledImage>
+        <img src={img} alt={alt} />
+      </StyledImage>
       <StyledTitle>
         <h3>{title}</h3>
         <button onClick={onSelect}>{isSelected ? '-' : '+'}</button>

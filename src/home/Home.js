@@ -54,7 +54,7 @@ export default function Home({ onClick, homeButton }) {
   useEffect(() => {
     const id = setInterval(() => {
       newGreeting(c => c + 1)
-    }, 2000)
+    }, 900)
     return () => clearInterval(id)
   }, [])
 
@@ -64,7 +64,7 @@ export default function Home({ onClick, homeButton }) {
         <h1>{data.content}</h1>
       </Text>
       <Button onClick={onClick} homeButton={homeButton}>
-        Start your day!
+        Start your Morning!
       </Button>
     </Background>
   )

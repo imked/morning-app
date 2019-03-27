@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import useInputState from './useInputState'
 
 const StyledForm = styled.form`
   display: grid;
@@ -16,19 +15,26 @@ const StyledButton = styled.button`
   border-radius: 4px;
   color: #fff;
   height: 38px;
+  font-size: 16px;
 `
 
 export default function Form({ addTask }) {
-  const { value, reset, onChange } = useInputState('')
+  const [value, setValue] = useState('')
 
-  function onSubmit(event) {
-    event.preventDefault()
-    addTask(value)
-    reset('')
+  function onChange(event) {
+    setValue(event.target.value)
   }
 
+  function handleSubmit(event) {
+    useEffect(() => {
+      event.preventDefault()
+      if (!value) return
+      addTask(value)
+      setValue('')
+    })
+  }
   return (
-    <StyledForm onSubmit={onSubmit}>
+    <StyledForm onSubmit={handleSubmit}>
       <input
         value={value}
         onChange={onChange}
