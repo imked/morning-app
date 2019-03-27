@@ -26,12 +26,10 @@ export default function Form({ addTask }) {
   }
 
   function handleSubmit(event) {
-    useEffect(() => {
-      event.preventDefault()
-      if (!value) return
-      addTask(value)
-      setValue('')
-    })
+    event.preventDefault()
+    if (!value) return
+    addTask(value)
+    setValue('')
   }
   return (
     <StyledForm onSubmit={handleSubmit}>
