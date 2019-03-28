@@ -17,12 +17,12 @@ const StyledButton = styled.button`
   color: #fff;
 `
 
-export default function Form({ saveTask }) {
+export default function Form({ addTask }) {
   const { value, reset, onChange } = useInputState('')
 
   function onSubmit(event) {
     event.preventDefault()
-    saveTask(value)
+    addTask(value)
     reset('')
   }
 
