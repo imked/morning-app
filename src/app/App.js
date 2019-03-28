@@ -3,6 +3,7 @@ import GlobalStyle from './GlobalStyle'
 import Home from '../home/Home'
 import Cards from '../cards/Cards'
 import CreateTaskPage from '../form/CreateTaskPage'
+import Timer from '../timer/Timer'
 import Helmet from 'react-helmet'
 import { BrowserRouter as Router, NavLink, Route } from 'react-router-dom'
 import styled from 'styled-components'
@@ -89,6 +90,7 @@ export default function App() {
           path="/routines"
           render={() => <Cards cards={cards} onSelect={onSelect} />}
         />
+        <Route path="/timer" render={() => <Timer />} />
         <Nav>
           <StyledLink exact to="/">
             <img src={homeIcon} alt="home" />
