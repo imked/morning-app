@@ -13,9 +13,15 @@ const greetings = [
   { content: 'Günaydın!' },
 ]
 
-const Container = styled.section`
+const Background = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
   display: grid;
-  grid-template-rows: 70px 30px;
+  grid-template-rows: 70px 20px;
   align-content: center;
   justify-content: center;
 `
@@ -23,16 +29,17 @@ const Container = styled.section`
 const Text = styled.div`
   width: 286px;
   height: 38px;
-  color: #f4b16b;
+  color: #fefefe;
   text-align: center;
 `
 
 const Button = styled.button`
   border: none;
   border-radius: 4px;
-  background: #f4b16b;
+  background: none;
   color: white;
   font-size: 16px;
+  text-decoration: underline;
 `
 
 export default function Home({ onClick, homeButton }) {
@@ -47,18 +54,18 @@ export default function Home({ onClick, homeButton }) {
   useEffect(() => {
     const id = setInterval(() => {
       newGreeting(c => c + 1)
-    }, 3000)
+    }, 900)
     return () => clearInterval(id)
   }, [])
 
   return (
-    <Container>
+    <Background>
       <Text>
         <h1>{data.content}</h1>
       </Text>
       <Button onClick={onClick} homeButton={homeButton}>
-        Start your day!
+        Start your Morning!
       </Button>
-    </Container>
+    </Background>
   )
 }
