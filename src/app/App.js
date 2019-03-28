@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import GlobalStyle from './GlobalStyle'
+import Home from '../home/Home'
 import Cards from '../cards/Cards'
 import CreateTaskPage from '../form/CreateTaskPage'
 import Helmet from 'react-helmet'
@@ -61,9 +62,10 @@ export default function App() {
           />
         </Helmet>
         <Header />
+        <Route exact path="/" render={() => <Home />} />
         <Route
           exact
-          path="/"
+          path="/create"
           render={() => <CreateTaskPage cards={cards} onSelect={onSelect} />}
         />
         <Route
@@ -71,10 +73,12 @@ export default function App() {
           render={() => <Cards cards={cards} onSelect={onSelect} />}
         />
         <Nav>
-          <StyledLink to="/routines">Routines</StyledLink>
           <StyledLink exact to="/">
-            Daily Tasks
+            Home
           </StyledLink>
+          <StyledLink to="/routines">Routines</StyledLink>
+          <StyledLink to="/create">Daily Tasks</StyledLink>
+          <StyledLink to="/timer">Timer</StyledLink>
         </Nav>
         <GlobalStyle />
       </Grid>

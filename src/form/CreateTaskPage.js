@@ -7,7 +7,7 @@ import useTaskState from './useTaskState'
 const Grid = styled.section`
   display: grid;
   grid-gap: 10px;
-  grid-template-rows: 1fr 100px;
+  grid-template-rows: 1fr 150px;
   align-content: top;
   justify-content: center;
   overflow-y: scroll;

@@ -5,16 +5,17 @@ import useInputState from './useInputState'
 const StyledForm = styled.form`
   display: grid;
   grid-gap: 10px;
+  justify-content: center;
+  align-content: center;
+  font-size: 16px;
 `
-const StyledInput = styled.input`
-  margin: 10px 15px 0;
-`
+
 const StyledButton = styled.button`
-  margin: 0 40px 20px;
   background: #f4b16b;
   border: #f4b16b;
   border-radius: 4px;
   color: #fff;
+  height: 38px;
 `
 
 export default function Form({ addTask }) {
@@ -28,7 +29,7 @@ export default function Form({ addTask }) {
 
   return (
     <StyledForm onSubmit={onSubmit}>
-      <StyledInput
+      <input
         value={value}
         onChange={onChange}
         name="task"
