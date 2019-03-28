@@ -5,7 +5,12 @@ import Cards from '../cards/Cards'
 import CreateTaskPage from '../form/CreateTaskPage'
 import Timer from '../timer/Timer'
 import Helmet from 'react-helmet'
-import { BrowserRouter as Router, NavLink, Route } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  NavLink,
+  Route,
+  Redirect,
+} from 'react-router-dom'
 import styled from 'styled-components'
 import Header from '../common/Header'
 import routines from './routines'
@@ -43,7 +48,12 @@ const StyledLink = styled(NavLink)`
   }
 `
 
+const state = {
+  isClicked: false,
+}
+
 export default function App() {
+  const [homeButton, setHomeButton] = useState(state)
   const [cards, setCards] = useState(routines)
 
   function onSelect(card) {
@@ -56,7 +66,10 @@ export default function App() {
   }
   function addTask(value) {
     setCards([...cards, { title: value, isSelected: true }])
-    console.log(cards)
+  }
+
+  function onClick() {
+    setHomeButton({ isClicked: true })
   }
 
   return (
@@ -74,7 +87,17 @@ export default function App() {
           />
         </Helmet>
         <Header />
-        <Route exact path="/" render={() => <Home />} />
+        <Route
+          exact
+          path="/"
+          render={() =>
+            homeButton.isClicked ? (
+              <Redirect to="/create" />
+            ) : (
+              <Home onClick={onClick} homeButton={homeButton} />
+            )
+          }
+        />
         <Route
           exact
           path="/create"

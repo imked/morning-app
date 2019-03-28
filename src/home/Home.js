@@ -35,7 +35,7 @@ const Button = styled.button`
   font-size: 16px;
 `
 
-export default function Home() {
+export default function Home({ onClick, homeButton }) {
   const [data, setData] = useState(greetings)
 
   function newGreeting() {
@@ -56,7 +56,9 @@ export default function Home() {
       <Text>
         <h1>{data.content}</h1>
       </Text>
-      <Button>Start your day!</Button>
+      <Button onClick={onClick} homeButton={homeButton}>
+        Start your day!
+      </Button>
     </Container>
   )
 }
