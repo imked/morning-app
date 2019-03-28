@@ -8,6 +8,10 @@ import { BrowserRouter as Router, NavLink, Route } from 'react-router-dom'
 import styled from 'styled-components'
 import Header from '../common/Header'
 import routines from './routines'
+import bookmarkIcon from '../images/Bookmark.png'
+import checkedIcon from '../images/Checked.png'
+import homeIcon from '../images/Home.png'
+import clockIcon from '../images/Clock.png'
 
 const Grid = styled.div`
   display: grid;
@@ -27,8 +31,11 @@ const StyledLink = styled(NavLink)`
   justify-content: center;
   align-items: center;
   background: #f6c972;
-  color: #fff;
   text-decoration: none;
+
+  > img {
+    color: white;
+  }
 
   &.active {
     background: #f4b16b;
@@ -45,6 +52,10 @@ export default function App() {
       { ...card, isSelected: !card.isSelected },
       ...cards.slice(index + 1),
     ])
+  }
+  function addTask(value) {
+    setCards([...cards, { title: value, isSelected: true }])
+    console.log(cards)
   }
 
   return (
@@ -66,7 +77,13 @@ export default function App() {
         <Route
           exact
           path="/create"
-          render={() => <CreateTaskPage cards={cards} onSelect={onSelect} />}
+          render={() => (
+            <CreateTaskPage
+              cards={cards}
+              onSelect={onSelect}
+              addTask={addTask}
+            />
+          )}
         />
         <Route
           path="/routines"
@@ -74,11 +91,17 @@ export default function App() {
         />
         <Nav>
           <StyledLink exact to="/">
-            Home
+            <img src={homeIcon} alt="home" />
           </StyledLink>
-          <StyledLink to="/routines">Routines</StyledLink>
-          <StyledLink to="/create">Daily Tasks</StyledLink>
-          <StyledLink to="/timer">Timer</StyledLink>
+          <StyledLink to="/routines">
+            <img src={bookmarkIcon} alt="bookmark" />
+          </StyledLink>
+          <StyledLink to="/create">
+            <img src={checkedIcon} alt="checked" />
+          </StyledLink>
+          <StyledLink to="/timer">
+            <img src={clockIcon} alt="clock" />
+          </StyledLink>
         </Nav>
         <GlobalStyle />
       </Grid>

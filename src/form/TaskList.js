@@ -1,24 +1,26 @@
 import React from 'react'
 import styled from 'styled-components'
 import DeleteIcon from '@material-ui/icons/Delete'
-import { uid } from 'react-uid'
+import DraggableList from './DraggableList'
 
-const StyledList = styled.ul`
-  list-style-type: none;
-  justify-content: center;
-
-  padding-inline-start: 0;
+const StyledDiv = styled.div`
+  padding: 38px;
+  width: 100%;
+  overflow: hidden;
+  user-select: none;
 `
+
 const StyledItem = styled.li`
   display: grid;
-  grid-template-columns: 25px 1fr 25px;
+  grid-template-columns: 35px 1fr 35px;
   align-items: center;
   border-radius: 4px;
-  border: 1px solid #f4b16b;
-  width: 286px;
   > * {
     padding: 0;
-    margin: 0;
+    margin: 0 5px;
+  }
+  > input {
+    width: 25px;
   }
 
   > p {
@@ -26,36 +28,22 @@ const StyledItem = styled.li`
     text-overflow: ellipsis;
     white-space: nowrap;
     margin: 0;
+    text-transform: uppercase;
+    color: white;
   }
 `
 const StyledButton = styled.button`
-  background-color: white;
-  border-color: white;
-  padding: -1px;
   height: 30px;
 `
 
-export default function TaskList({ tasks, cards, deleteTask, onSelect }) {
+export default function TaskList({ cards, onSelect }) {
   return (
-    <div>
-      <StyledList>
-        {tasks.map((task, index) => (
-          <StyledItem key={uid(index)}>
-            <input type="checkbox" />
-            <p>{task}</p>
-            <StyledButton
-              onClick={() => {
-                deleteTask(index)
-              }}
-            >
-              <DeleteIcon />
-            </StyledButton>
-          </StyledItem>
-        ))}
-        {cards
+    <StyledDiv>
+      <DraggableList
+        items={cards
           .filter(card => card.isSelected)
-          .map((card, index) => (
-            <StyledItem key={uid(index)}>
+          .map(card => (
+            <StyledItem>
               <input type="checkbox" />
               <p>{card.title}</p>
               <StyledButton onClick={() => onSelect(card)}>
@@ -63,7 +51,7 @@ export default function TaskList({ tasks, cards, deleteTask, onSelect }) {
               </StyledButton>
             </StyledItem>
           ))}
-      </StyledList>
-    </div>
+      />
+    </StyledDiv>
   )
 }
