@@ -27,6 +27,18 @@ const StyledDiv = styled.div`
   > div:nth-child(4) {
     background: linear-gradient(135deg, #dcf956 0%, #7ef75f 100%);
   }
+  > div:nth-child(5) {
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+  }
+  > div:nth-child(6) {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  }
+  > div:nth-child(7) {
+    background: linear-gradient(135deg, #5ee7df 0%, #b490ca 100%);
+  }
+  > div:nth-child(8) {
+    background: linear-gradient(135deg, #dcf956 0%, #7ef75f 100%);
+  }
 `
 
 const fn = (order, down, originalIndex, curIndex, y) => index =>

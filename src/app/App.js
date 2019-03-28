@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import GlobalStyle from './GlobalStyle'
 import Home from '../home/Home'
 import Cards from '../cards/Cards'
 import CreateTaskPage from '../form/CreateTaskPage'
 import Timer from '../timer/Timer'
 import Helmet from 'react-helmet'
+import { getAllCards } from '../services'
 import {
   BrowserRouter as Router,
   NavLink,
@@ -17,6 +18,7 @@ import routines from './routines'
 import bookmarkIcon from '../images/Bookmark.png'
 import checkedIcon from '../images/Checked.png'
 import clockIcon from '../images/Clock.png'
+import { uid } from 'react-uid'
 
 const Grid = styled.div`
   display: grid;
@@ -55,6 +57,13 @@ export default function App() {
   const [homeButton, setHomeButton] = useState(state)
   const [cards, setCards] = useState(routines)
 
+  // useEffect(() => {
+  //   getAllCards().then(res => {
+  //     setCards(res.data)
+  //     console.log(res.data)
+  //   })
+  // }, [])
+
   function onSelect(card) {
     const index = cards.indexOf(card)
     setCards([
@@ -64,7 +73,8 @@ export default function App() {
     ])
   }
   function addTask(value) {
-    setCards([...cards, { title: value, isSelected: true }])
+    console.log(cards)
+    setCards([...cards, { title: value, isSelected: true, id: uid }])
   }
 
   function onClick() {
@@ -74,7 +84,7 @@ export default function App() {
   return (
     <Router>
       <Grid>
-        <Helmet>
+        {/* <Helmet>
           <title>My Miracle Morning</title>
           <link
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500|Roboto+Slab"
@@ -84,7 +94,7 @@ export default function App() {
             rel="stylesheet"
             href="https://fonts.googleapis.com/icon?family=Material+Icons"
           />
-        </Helmet>
+        </Helmet> */}
         <Header />
         <Route
           exact
@@ -114,11 +124,11 @@ export default function App() {
         />
         <Route path="/timer" render={() => <Timer />} />
         <Nav>
-          <StyledLink to="/routines">
-            <img src={bookmarkIcon} alt="bookmark" />
-          </StyledLink>
           <StyledLink to="/create">
             <img src={checkedIcon} alt="checked" />
+          </StyledLink>
+          <StyledLink to="/routines">
+            <img src={bookmarkIcon} alt="bookmark" />
           </StyledLink>
           <StyledLink to="/timer">
             <img src={clockIcon} alt="clock" />
