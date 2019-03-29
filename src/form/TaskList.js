@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import DeleteIcon from '@material-ui/icons/Delete'
-import DraggableList from './DraggableList'
+import DraggableItems from './DraggableItems'
 
 const StyledDiv = styled.div`
   padding: 38px;
@@ -22,7 +22,6 @@ const StyledItem = styled.li`
   > input {
     width: 25px;
   }
-
   > p {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -39,7 +38,7 @@ const StyledButton = styled.button`
 export default function TaskList({ cards, onSelect }) {
   return (
     <StyledDiv>
-      <DraggableList
+      <DraggableItems
         items={cards
           .filter(card => card.isSelected)
           .map(card => (

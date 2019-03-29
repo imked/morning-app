@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 const StyledForm = styled.form`
@@ -31,6 +31,7 @@ export default function Form({ addTask }) {
     addTask(value)
     setValue('')
   }
+
   return (
     <StyledForm onSubmit={handleSubmit}>
       <input
@@ -38,7 +39,7 @@ export default function Form({ addTask }) {
         onChange={onChange}
         name="task"
         type="text"
-        placeholder="Insert tasks here"
+        placeholder="Insert tasks here!"
       />
       <StyledButton>Add task!</StyledButton>
     </StyledForm>

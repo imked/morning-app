@@ -13,6 +13,7 @@ const Container = styled('div')`
 
   > h2 {
     color: #f4b16b;
+    text-transform: uppercase;
   }
 `
 
@@ -71,7 +72,7 @@ const MODE = {
 const initialState = {
   countDown: null,
   mode: MODE.INITIAL,
-  options: [60, 45, 30, 15, 10, 5],
+  options: [5, 10, 15, 30, 46, 60],
 }
 
 const reducer = (state, { type, payload }) =>

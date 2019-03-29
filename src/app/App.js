@@ -1,19 +1,21 @@
-import React, { useState, useEffect } from 'react'
-import GlobalStyle from './GlobalStyle'
-import Home from '../home/Home'
-import Cards from '../cards/Cards'
-import CreateTaskPage from '../form/CreateTaskPage'
-import Timer from '../timer/Timer'
-import Helmet from 'react-helmet'
-import { getAllCards } from '../services'
+import React, { useState } from 'react'
 import {
   BrowserRouter as Router,
   NavLink,
   Route,
   Redirect,
 } from 'react-router-dom'
+
+import GlobalStyle from './GlobalStyle'
 import styled from 'styled-components'
+import Helmet from 'react-helmet'
+
+import Home from '../home/Home'
+import Cards from '../cards/Cards'
+import CreateTaskPage from '../form/CreateTaskPage'
+import Timer from '../timer/Timer'
 import Header from '../common/Header'
+
 import routines from './routines'
 import bookmarkIcon from '../images/Bookmark.png'
 import checkedIcon from '../images/Checked.png'
@@ -57,13 +59,6 @@ export default function App() {
   const [homeButton, setHomeButton] = useState(state)
   const [cards, setCards] = useState(routines)
 
-  // useEffect(() => {
-  //   getAllCards().then(res => {
-  //     setCards(res.data)
-  //     console.log(res.data)
-  //   })
-  // }, [])
-
   function onSelect(card) {
     const index = cards.indexOf(card)
     setCards([
@@ -72,8 +67,8 @@ export default function App() {
       ...cards.slice(index + 1),
     ])
   }
+
   function addTask(value) {
-    console.log(cards)
     setCards([...cards, { title: value, isSelected: true, id: uid }])
   }
 
@@ -84,24 +79,20 @@ export default function App() {
   return (
     <Router>
       <Grid>
-        {/* <Helmet>
-          <title>My Miracle Morning</title>
-          <link
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500|Roboto+Slab"
-            rel="stylesheet"
-          />
+        <Helmet>
+          <title>Miracle Morning</title>
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/icon?family=Material+Icons"
           />
-        </Helmet> */}
+        </Helmet>
         <Header />
         <Route
           exact
           path="/"
           render={() =>
             homeButton.isClicked ? (
-              <Redirect to="/create" />
+              <Redirect to="/tasklist" />
             ) : (
               <Home onClick={onClick} homeButton={homeButton} />
             )
@@ -109,7 +100,7 @@ export default function App() {
         />
         <Route
           exact
-          path="/create"
+          path="/tasklist"
           render={() => (
             <CreateTaskPage
               cards={cards}
@@ -124,7 +115,7 @@ export default function App() {
         />
         <Route path="/timer" render={() => <Timer />} />
         <Nav>
-          <StyledLink to="/create">
+          <StyledLink to="/tasklist">
             <img src={checkedIcon} alt="checked" />
           </StyledLink>
           <StyledLink to="/routines">
