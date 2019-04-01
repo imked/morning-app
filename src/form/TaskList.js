@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import DeleteIcon from '@material-ui/icons/Delete'
-import DraggableItems from './DraggableItems'
 
 const StyledDiv = styled.div`
   padding: 38px;
@@ -9,12 +8,19 @@ const StyledDiv = styled.div`
   overflow: hidden;
   user-select: none;
 `
+const StyledList = styled.ul`
+  list-style-type: none;
+  justify-content: center;
+  padding-inline-start: 0;
+`
 
 const StyledItem = styled.li`
+  background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
   display: grid;
   grid-template-columns: 35px 1fr 35px;
   align-items: center;
   border-radius: 4px;
+  margin: 0 0 5px;
   > * {
     padding: 0;
     margin: 0 5px;
@@ -35,14 +41,27 @@ const StyledButton = styled.button`
   height: 30px;
 `
 
-export default function TaskList({ cards, onSelect }) {
+export default function TaskList({ tasks, deleteTask, cards, onSelect }) {
   return (
     <StyledDiv>
-      <DraggableItems
-        items={cards
+      <StyledList>
+        {tasks.map((task, index) => (
+          <StyledItem key={index}>
+            <input type="checkbox" />
+            <p>{task.content}</p>
+            <StyledButton
+              onClick={() => {
+                deleteTask(index)
+              }}
+            >
+              <DeleteIcon />
+            </StyledButton>
+          </StyledItem>
+        ))}
+        {cards
           .filter(card => card.isSelected)
-          .map(card => (
-            <StyledItem>
+          .map((card, index) => (
+            <StyledItem key={index}>
               <input type="checkbox" />
               <p>{card.title}</p>
               <StyledButton onClick={() => onSelect(card)}>
@@ -50,7 +69,7 @@ export default function TaskList({ cards, onSelect }) {
               </StyledButton>
             </StyledItem>
           ))}
-      />
+      </StyledList>
     </StyledDiv>
   )
 }

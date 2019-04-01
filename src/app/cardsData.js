@@ -6,7 +6,7 @@ import meditatePath from '../images/meditate.png'
 import visualizePath from '../images/visualize.png'
 import readBookPath from '../images/readabook.png'
 
-const routines = [
+const cards = [
   {
     img: wakeUpPath,
     alt: 'waking up',
@@ -72,4 +72,4 @@ const routines = [
   },
 ]
 
-export default routines
+export default cards

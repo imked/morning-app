@@ -1,14 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import cardsData from './cardsData'
 import {
   BrowserRouter as Router,
   NavLink,
   Route,
   Redirect,
 } from 'react-router-dom'
+import { getCardsFromStorage, saveCardsToStorage } from '../services'
 
 import GlobalStyle from './GlobalStyle'
 import styled from 'styled-components'
-import Helmet from 'react-helmet'
 
 import Home from '../home/Home'
 import Cards from '../cards/Cards'
@@ -16,7 +17,6 @@ import CreateTaskPage from '../form/CreateTaskPage'
 import Timer from '../timer/Timer'
 import Header from '../common/Header'
 
-import routines from './routines'
 import bookmarkIcon from '../images/Bookmark.png'
 import checkedIcon from '../images/Checked.png'
 import clockIcon from '../images/Clock.png'
@@ -57,7 +57,15 @@ const state = {
 
 export default function App() {
   const [homeButton, setHomeButton] = useState(state)
-  const [cards, setCards] = useState(routines)
+  const [cards, setCards] = useState(getCardsFromStorage())
+
+  useEffect(() => {
+    saveCardsToStorage(cards)
+  }, [cards])
+
+  function onClick() {
+    setHomeButton({ isClicked: true })
+  }
 
   function onSelect(card) {
     const index = cards.indexOf(card)
@@ -68,24 +76,9 @@ export default function App() {
     ])
   }
 
-  function addTask(value) {
-    setCards([...cards, { title: value, isSelected: true, id: uid }])
-  }
-
-  function onClick() {
-    setHomeButton({ isClicked: true })
-  }
-
   return (
     <Router>
       <Grid>
-        <Helmet>
-          <title>Miracle Morning</title>
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          />
-        </Helmet>
         <Header />
         <Route
           exact
@@ -101,13 +94,7 @@ export default function App() {
         <Route
           exact
           path="/tasklist"
-          render={() => (
-            <CreateTaskPage
-              cards={cards}
-              onSelect={onSelect}
-              addTask={addTask}
-            />
-          )}
+          render={() => <CreateTaskPage cards={cards} onSelect={onSelect} />}
         />
         <Route
           path="/routines"
