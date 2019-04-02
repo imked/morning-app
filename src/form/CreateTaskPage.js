@@ -25,8 +25,10 @@ export default function CreateTaskPage({ cards, onSelect }) {
   }
 
   function deleteTask(taskIndex) {
-    const newTasks = tasks.filter((_, index) => index !== taskIndex)
-    setTasks(newTasks)
+    if (window.confirm('Are you sure?')) {
+      const newTasks = tasks.filter((_, index) => index !== taskIndex)
+      setTasks(newTasks)
+    }
   }
 
   return (

@@ -1,6 +1,7 @@
 import React, { useEffect, useReducer } from 'react'
 import styled from 'styled-components'
-
+import Sound from 'react-sound'
+import alertSoundURL from './alert.mp3'
 import produce from 'immer'
 import { formatCountDown } from './lib'
 
@@ -72,7 +73,7 @@ const MODE = {
 const initialState = {
   countDown: null,
   mode: MODE.INITIAL,
-  options: [5, 10, 15, 30, 46, 60],
+  options: [5, 10, 15, 30, 45, 60],
 }
 
 const reducer = (state, { type, payload }) =>
@@ -142,6 +143,12 @@ export default function TaskTimer() {
       >
         {countDown ? formatCountDown(countDown) : '?'}
       </Timer>
+      <Sound
+        url={alertSoundURL}
+        playStatus={
+          mode === MODE.DONE ? Sound.status.PLAYING : Sound.status.PAUSED
+        }
+      />
     </Container>
   )
 }

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import cardsData from './cardsData'
 import {
   BrowserRouter as Router,
   NavLink,
@@ -20,7 +19,6 @@ import Header from '../common/Header'
 import bookmarkIcon from '../images/Bookmark.png'
 import checkedIcon from '../images/Checked.png'
 import clockIcon from '../images/Clock.png'
-import { uid } from 'react-uid'
 
 const Grid = styled.div`
   display: grid;
@@ -59,13 +57,13 @@ export default function App() {
   const [homeButton, setHomeButton] = useState(state)
   const [cards, setCards] = useState(getCardsFromStorage())
 
-  useEffect(() => {
-    saveCardsToStorage(cards)
-  }, [cards])
-
   function onClick() {
     setHomeButton({ isClicked: true })
   }
+
+  useEffect(() => {
+    saveCardsToStorage(cards)
+  }, [cards])
 
   function onSelect(card) {
     const index = cards.indexOf(card)
