@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import DeleteIcon from '@material-ui/icons/Delete'
 
@@ -41,13 +41,41 @@ const StyledButton = styled.button`
   height: 30px;
 `
 
-export default function TaskList({ tasks, deleteTask, cards, onSelect }) {
+export default function TaskList({
+  setTasks,
+  tasks,
+  deleteTask,
+  cards,
+  onSelect,
+}) {
+  useEffect(() => {
+    console.log(tasks)
+  }, [tasks])
+  function handleChecked(index) {
+    // const target = event.target
+    // const value = target.type === 'checkbox' ? target.checked : target.value
+    // const name = target.name
+    setTasks([
+      ...tasks.slice(0, index),
+      { ...tasks[index], isChecked: !tasks[index].isChecked },
+      ...tasks.slice(index + 1),
+    ])
+    // setTasks({
+    //   [name]: value,
+    // })
+  }
+
   return (
     <StyledDiv>
       <StyledList>
         {tasks.map((task, index) => (
           <StyledItem key={index}>
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              checked={task.isChecked}
+              name="content"
+              onChange={() => handleChecked(index)}
+            />
             <p>{task.content}</p>
             <StyledButton
               onClick={() => {

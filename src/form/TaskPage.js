@@ -21,7 +21,8 @@ export default function CreateTaskPage({ cards, onSelect }) {
   }, [tasks])
 
   function addTask(value) {
-    setTasks([...tasks, { content: value }])
+    setTasks([...tasks, { content: value, isChecked: true }])
+    console.log(tasks)
   }
 
   function deleteTask(taskIndex) {
@@ -38,6 +39,7 @@ export default function CreateTaskPage({ cards, onSelect }) {
         tasks={tasks}
         cards={cards}
         onSelect={onSelect}
+        setTasks={setTasks}
       />
       <Form addTask={addTask} />
     </Grid>
