@@ -12,7 +12,7 @@ import styled from 'styled-components'
 
 import Home from '../home/Home'
 import Cards from '../cards/Cards'
-import CreateTaskPage from '../form/CreateTaskPage'
+import TaskPage from '../form/TaskPage'
 import Timer from '../timer/Timer'
 import Header from '../common/Header'
 
@@ -92,7 +92,7 @@ export default function App() {
         <Route
           exact
           path="/tasklist"
-          render={() => <CreateTaskPage cards={cards} onSelect={onSelect} />}
+          render={() => <TaskPage cards={cards} onSelect={onSelect} />}
         />
         <Route
           path="/routines"
@@ -100,11 +100,11 @@ export default function App() {
         />
         <Route path="/timer" render={() => <Timer />} />
         <Nav>
-          <StyledLink to="/tasklist">
-            <img src={checkedIcon} alt="checked" />
-          </StyledLink>
           <StyledLink to="/routines">
             <img src={bookmarkIcon} alt="bookmark" />
+          </StyledLink>
+          <StyledLink to="/tasklist">
+            <img src={checkedIcon} alt="checked" />
           </StyledLink>
           <StyledLink to="/timer">
             <img src={clockIcon} alt="clock" />

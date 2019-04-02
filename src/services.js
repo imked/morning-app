@@ -1,5 +1,5 @@
 import TaskData from './form/taskData'
-import CardData from './app/cardsData'
+import CardData from './cards/cardsData'
 
 export function getTasksFromStorage() {
   return getFromStorage('tasks') || TaskData
