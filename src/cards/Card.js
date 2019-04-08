@@ -69,14 +69,6 @@ const StyledImage = styled.div`
   }
 `
 
-Card.defaultProps = {
-  title: 'No title defined',
-  content: 'No content',
-  selected: false,
-  img: 'No image',
-  alt: 'No image',
-}
-
 export default function Card({
   title,
   content,
