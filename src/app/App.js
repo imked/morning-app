@@ -92,7 +92,9 @@ export default function App() {
         <Route
           exact
           path="/tasklist"
-          render={() => <TaskPage cards={cards} onSelect={onSelect} />}
+          render={() => (
+            <TaskPage cards={cards} onSelect={onSelect} setCards={setCards} />
+          )}
         />
         <Route
           path="/routines"

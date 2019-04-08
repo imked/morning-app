@@ -53,6 +53,7 @@ const Timer = styled('div')`
   font-size: 40px;
   font-weight: 700;
   line-height: 40px;
+  justify-content: center;
   position: absolute;
   color: #f4b16b;
   top: 50%;
@@ -73,7 +74,7 @@ const MODE = {
 const initialState = {
   countDown: null,
   mode: MODE.INITIAL,
-  options: [5, 10, 15, 30, 45, 60],
+  options: [0.1, 5, 10, 15, 30, 45, 60],
 }
 
 const reducer = (state, { type, payload }) =>
@@ -141,7 +142,7 @@ export default function TaskTimer() {
         }
         visible={mode === MODE.PLAYING || mode === MODE.PAUSED}
       >
-        {countDown ? formatCountDown(countDown) : '?'}
+        {countDown ? formatCountDown(countDown) : 'Great!'}
       </Timer>
       <Sound
         url={alertSoundURL}

@@ -13,7 +13,7 @@ const Grid = styled.section`
   overflow-y: scroll;
 `
 
-export default function CreateTaskPage({ cards, onSelect }) {
+export default function CreateTaskPage({ cards, onSelect, setCards }) {
   const [tasks, setTasks] = useState(getTasksFromStorage())
 
   useEffect(() => {
@@ -21,7 +21,7 @@ export default function CreateTaskPage({ cards, onSelect }) {
   }, [tasks])
 
   function addTask(value) {
-    setTasks([...tasks, { content: value, isChecked: true }])
+    setTasks([...tasks, { content: value, isChecked: false }])
     console.log(tasks)
   }
 
@@ -35,6 +35,7 @@ export default function CreateTaskPage({ cards, onSelect }) {
   return (
     <Grid>
       <TaskList
+        setCards={setCards}
         deleteTask={deleteTask}
         tasks={tasks}
         cards={cards}

@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import DeleteIcon from '@material-ui/icons/Delete'
+import DeleteIcon from '../images/deleteicon.png'
 
 const StyledDiv = styled.div`
   padding: 38px;
@@ -17,7 +17,7 @@ const StyledList = styled.ul`
 const StyledItem = styled.li`
   background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
   display: grid;
-  grid-template-columns: 35px 1fr 35px;
+  grid-template-columns: 35px 1fr 45px;
   align-items: center;
   border-radius: 4px;
   margin: 0 0 5px;
@@ -28,6 +28,7 @@ const StyledItem = styled.li`
   > input {
     width: 25px;
   }
+
   > p {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -39,6 +40,11 @@ const StyledItem = styled.li`
 `
 const StyledButton = styled.button`
   height: 30px;
+  background: none;
+  border: none;
+  > * {
+    height: 20px;
+  }
 `
 
 export default function TaskList({
@@ -47,22 +53,22 @@ export default function TaskList({
   deleteTask,
   cards,
   onSelect,
+  setCards,
 }) {
-  useEffect(() => {
-    console.log(tasks)
-  }, [tasks])
-  function handleChecked(index) {
-    // const target = event.target
-    // const value = target.type === 'checkbox' ? target.checked : target.value
-    // const name = target.name
+  function handleTaskChecked(index) {
     setTasks([
       ...tasks.slice(0, index),
       { ...tasks[index], isChecked: !tasks[index].isChecked },
       ...tasks.slice(index + 1),
     ])
-    // setTasks({
-    //   [name]: value,
-    // })
+  }
+
+  function handleCardChecked(index) {
+    setCards([
+      ...cards.slice(0, index),
+      { ...cards[index], isChecked: !cards[index].isChecked },
+      ...cards.slice(index + 1),
+    ])
   }
 
   return (
@@ -74,15 +80,17 @@ export default function TaskList({
               type="checkbox"
               checked={task.isChecked}
               name="content"
-              onChange={() => handleChecked(index)}
+              onChange={() => handleTaskChecked(index)}
             />
-            <p>{task.content}</p>
+            <p style={{ color: task.isChecked ? 'darkgrey' : null }}>
+              {task.content}
+            </p>
             <StyledButton
               onClick={() => {
                 deleteTask(index)
               }}
             >
-              <DeleteIcon />
+              <img src={DeleteIcon} alt="deleteIcon" />
             </StyledButton>
           </StyledItem>
         ))}
@@ -90,10 +98,17 @@ export default function TaskList({
           .filter(card => card.isSelected)
           .map((card, index) => (
             <StyledItem key={index}>
-              <input type="checkbox" />
-              <p>{card.title}</p>
+              <input
+                type="checkbox"
+                checked={card.isChecked}
+                name="content"
+                onChange={() => handleCardChecked(index)}
+              />
+              <p style={{ color: card.isChecked ? 'darkgrey' : null }}>
+                {card.title}
+              </p>
               <StyledButton onClick={() => onSelect(card)}>
-                <DeleteIcon />
+                <img src={DeleteIcon} alt="deleteIcon" />
               </StyledButton>
             </StyledItem>
           ))}
