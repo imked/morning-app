@@ -11,7 +11,6 @@ export default createGlobalStyle`
   }
 
   input, li{
-    padding-left: 4px;
     font-size: 16px;
     border-radius: 4px;
     width: 286px;

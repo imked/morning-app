@@ -41,7 +41,7 @@ const StyledLink = styled(NavLink)`
   text-decoration: none;
 
   > img {
-    color: white;
+    color: #fefefe;
   }
 
   &.active {

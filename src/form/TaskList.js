@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import DeleteIcon from '../images/deleteicon.png'
 
 const StyledDiv = styled.div`
   padding: 38px;
@@ -35,7 +34,12 @@ const StyledItem = styled.li`
     white-space: nowrap;
     margin: 0;
     text-transform: uppercase;
-    color: white;
+    color: #fefefe;
+  }
+
+  > div {
+    color: #fefefe;
+    font-size: 24px;
   }
 `
 const StyledButton = styled.button`
@@ -44,6 +48,8 @@ const StyledButton = styled.button`
   border: none;
   > * {
     height: 20px;
+    color: #fefefe;
+    font-size: 18px;
   }
 `
 
@@ -74,15 +80,41 @@ export default function TaskList({
   return (
     <StyledDiv>
       <StyledList>
+        {cards
+          .filter(card => card.isSelected)
+          .map((card, index) => (
+            <StyledItem key={index}>
+              <div name="content" onClick={() => handleCardChecked(index)}>
+                {card.isChecked ? (
+                  <i className="far fa-check-square" />
+                ) : (
+                  <i className="far fa-square" />
+                )}
+              </div>
+              <p
+                style={{
+                  textDecoration: card.isChecked ? 'line-through' : null,
+                }}
+              >
+                {card.title}
+              </p>
+              <StyledButton onClick={() => onSelect(card)}>
+                <i class="far fa-trash-alt" />
+              </StyledButton>
+            </StyledItem>
+          ))}
         {tasks.map((task, index) => (
           <StyledItem key={index}>
-            <input
-              type="checkbox"
-              checked={task.isChecked}
-              name="content"
-              onChange={() => handleTaskChecked(index)}
-            />
-            <p style={{ color: task.isChecked ? 'darkgrey' : null }}>
+            <div name="content" onClick={() => handleTaskChecked(index)}>
+              {task.isChecked ? (
+                <i className="far fa-check-square" />
+              ) : (
+                <i className="far fa-square" />
+              )}
+            </div>
+            <p
+              style={{ textDecoration: task.isChecked ? 'line-through' : null }}
+            >
               {task.content}
             </p>
             <StyledButton
@@ -90,28 +122,10 @@ export default function TaskList({
                 deleteTask(index)
               }}
             >
-              <img src={DeleteIcon} alt="deleteIcon" />
+              <i className="far fa-trash-alt" />
             </StyledButton>
           </StyledItem>
         ))}
-        {cards
-          .filter(card => card.isSelected)
-          .map((card, index) => (
-            <StyledItem key={index}>
-              <input
-                type="checkbox"
-                checked={card.isChecked}
-                name="content"
-                onChange={() => handleCardChecked(index)}
-              />
-              <p style={{ color: card.isChecked ? 'darkgrey' : null }}>
-                {card.title}
-              </p>
-              <StyledButton onClick={() => onSelect(card)}>
-                <img src={DeleteIcon} alt="deleteIcon" />
-              </StyledButton>
-            </StyledItem>
-          ))}
       </StyledList>
     </StyledDiv>
   )

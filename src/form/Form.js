@@ -7,6 +7,14 @@ const StyledForm = styled.form`
   justify-content: center;
   align-content: center;
   font-size: 16px;
+  color: #f4b16b;
+  > input {
+    padding-left: 10px;
+    border: 2px solid #f4b16b;
+    ::placeholder {
+      color: #f4b16b;
+    }
+  }
 `
 
 const StyledButton = styled.button`
