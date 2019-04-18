@@ -44,14 +44,8 @@ const StyledTitle = styled.div`
   justify-content: space-between;
   text-transform: uppercase;
   color: #f4b16b;
-  > button {
-    background: white;
-    color: #333;
-    font-size: 24px;
-    border: none;
-    & :focus {
-      outline: none;
-    }
+  > div {
+    margin-top: 20px;
   }
 `
 
@@ -84,7 +78,13 @@ export default function Card({
       </StyledImage>
       <StyledTitle>
         <h3>{title}</h3>
-        <button onClick={onSelect}>{isSelected ? '-' : '+'}</button>
+        <div onClick={onSelect}>
+          {isSelected ? (
+            <i className="fas fa-star" />
+          ) : (
+            <i className="far fa-star" />
+          )}
+        </div>
       </StyledTitle>
       <p>{content}</p>
     </StyledCard>
